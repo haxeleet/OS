@@ -19,7 +19,7 @@ CFLAGS = -ffreestanding -O2 -Wall -Wextra
 all: clean bear $(PROGRAM)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.S
-	$(AS) -I$(HEADER_DIR) -c $^ -o $@
+	$(GCC) -I$(HEADER_DIR) -c $^ -o $@
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(GCC) $(CFLAGS) -I$(HEADER_DIR) -c $^ -o $@
