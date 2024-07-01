@@ -3,6 +3,16 @@
 .globl _start
 
 _start:
+  // using only one core
+  mrs   x0, mpidr_el1
+  and   x0, x0, #0xFF
+  cbz   x0, entry
+  b loop
+
+loop:
+  b     loop
+
+entry:
   // set stack
   ldr   x5, =_start
   mov   sp, x5
